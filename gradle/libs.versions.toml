@@ -1,0 +1,55 @@
+[versions]
+# --- 기존 버전들 ---
+agp = "8.12.0"
+kotlin = "2.0.21" # 현재 사용 중인 Kotlin 버전
+coreKtx = "1.10.1"
+junit = "4.13.2" # junit:junit 버전
+junitVersion = "1.1.5" # androidx.test.ext:junit 버전
+espressoCore = "3.5.1"
+lifecycleRuntimeKtx = "2.6.1"
+activityCompose = "1.8.0"
+composeBom = "2024.09.00" # Compose BOM 버전 (매우 중요)
+
+# --- 새로 추가되는 버전들 (build.gradle.kts에서 사용할 라이브러리들을 위해) ---
+navigation = "2.7.7" # androidx.navigation:navigation-compose
+retrofit = "2.11.0" # com.squareup.retrofit2:retrofit
+gsonConverter = "2.11.0" # com.squareup.retrofit2:converter-gson
+okhttpLogging = "4.12.0" # com.squareup.okhttp3:logging-interceptor
+retrofitKotlinxSerialization = "1.0.0" # com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter (사용한다면)
+coil = "2.5.0" # io.coil-kt:coil-base, io.coil-kt:coil-compose
+# foundation 라이브러리는 composeBom이 버전을 관리하므로 별도 버전 정의 불필요
+
+[libraries]
+# --- 기존 라이브러리들 ---
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+# --- 새로 추가되는 라이브러리들 (build.gradle.kts에서 사용할 alias) ---
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" } # composeBom이 버전 관리
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
+
+retrofit-runtime = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "gsonConverter" }
+okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttpLogging" }
+# retrofit-kotlinx-serialization-converter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofitKotlinxSerialization" } # 사용하지 않으면 이 줄 제거
+
+coil-base = { group = "io.coil-kt", name = "coil-base", version.ref = "coil" }
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
